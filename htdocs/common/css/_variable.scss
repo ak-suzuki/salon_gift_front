@@ -1,0 +1,477 @@
+@charset "utf-8";
+
+// $widthPC: 1024px; //PC
+// $widthTab: 768px; //タブレット
+// $widthSp: 568px; //スマートフォン
+
+// @mixin tab {
+//   @media (min-width: $widthTab) and (max-width: ($widthPC)) {
+//     @content;
+//   }
+// }
+// @mixin sp {
+//   @media (max-width: ($widthTab)) {
+//     @content;
+//   }
+// }
+
+// メディアクエリ
+// 例：@include sc(sp){}
+$sc_pc: 768px;
+$sc_onlyPc: 1021px;
+$sc_tab: 1020px;
+$sc_sp: 767px;
+$sc_spMin: 375px;
+$sc_pcW: 1201px;
+$sc_pcMin: 1400px;
+
+@mixin sc($point){
+	@if $point == pc{
+		@media screen and (min-width:$sc_pc){
+			@content;
+		}
+	}@else if $point == onlyPc{
+		@media screen and (min-width:$sc_onlyPc){
+			@content;
+		}
+	}@else if $point == pcMin{
+		@media screen and (max-width:$sc_pcMin){
+			@content;
+		}
+	}@else if $point == pcW{
+		@media screen and (min-width:$sc_pcW){
+			@content;
+		}
+	}@else if $point == tab{
+		@media screen and (max-width:$sc_tab){
+			@content;
+		}
+	}@else if $point == sp{
+		@media screen and (max-width:$sc_sp){
+			@content;
+		}
+	}@else if $point == spMin{
+		@media screen and (max-width:$sc_spMin){
+			@content;
+		}
+	}
+}
+
+
+//　----------------------------------------------------------
+//　共通の変数を設定
+//　----------------------------------------------------------
+//ベースカラーセット
+$bc00: #000;
+$bc01: #111;
+$bc02: #222;
+$bc03: #333;
+$bc04: #444;
+$bc05: #555;
+$bc06: #666;
+$bc07: #777;
+$bc08: #888;
+$bc09: #999;
+$bccc: #ccc;
+$bcff: #fff;
+
+//青系統
+$bcb00: #006f8b;
+
+//赤系統
+$bcr00: #bb2626;
+
+//黄系統
+$bcy00: #ff9900;
+
+//　テーマカラー
+$tc01: #fff;
+$tc02: #ffca31;
+
+//　文字の色
+$fc01: #333;
+$fc02: #666;
+$fc03: #ffca31;
+$fc04: #fff;
+
+//　----------------------------------------------------------
+//　@extend
+//　----------------------------------------------------------
+%clearfix {
+	*zoom: 1;
+	&:after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+%clearCenter {// フロートリストのセンタリングの解除
+	left: auto;
+	float: none;
+}
+%box-sizing{
+	-webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+         -o-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+//　----------------------------------------------------------
+//　汎用スタイルのミックスイン
+//　----------------------------------------------------------
+
+// フロートリストのセンタリング
+@mixin liCenter($type: 1) {
+	position: relative;
+	left: 50%;
+	float: left;
+	li {
+		position: relative;
+		left: -50%;
+		float: left;
+	}
+}
+
+// テキストリンク
+@mixin link($normal: $fontColor01, $hover: $fontColor02 ,$time: 1s) {
+	color: $normal;
+	&:hover {
+		color: $hover;
+		text-decoration: none;
+		border-bottom: 1px dotted $hover;
+		-webkit-transition: color $time ease;
+		-moz-transition: color $time ease;
+		-ms-transition: color $time ease;
+		-o-transition: color $time ease;
+		transition: color $time ease;
+	}
+}
+
+// アニメーション設定
+@mixin anim($property: all, $time: 0.5s, $timing: ease) {
+	-webkit-transition: $property $time $timing;
+	-moz-transition: $property $time $timing;
+	-ms-transition: $property $time $timing;
+	-o-transition: $property $time $timing;
+	transition: $property $time $timing;
+}
+
+// 画像スケール
+@mixin scale($property: 1.1){
+	-webkit-transform: scale($property,$property);
+	-moz-transform: scale($property,$property);
+	-ms-transform: scale($property,$property);
+	-o-transform: scale($property,$property);
+	transform: scale($property,$property);
+}
+
+// background-size
+@mixin bg-size($property: auto) {
+	-webkit-background-size: $property;
+	-moz-background-size: $property;
+	-o-background-size: $property;
+	background-size: $property;
+}
+
+@mixin flex($display: 1, $direction:row, $align:center) {
+	@if $display == 1 {
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
+	}
+	@if $direction != 0 {
+		-webkit-flex-direction: $direction;
+		-moz-flex-direction: $direction;
+		flex-direction: $direction;
+	}
+	@if $align != 0 {
+		-webkit-align-items: $align;
+		-moz-align-items: $align;
+		align-items: $align;
+	}
+}
+
+@mixin box($align: center, $pack: center){
+	display:-moz-box;
+	display:-webkit-box;
+	display:-o-box;
+	display:-ms-box;
+	display:box;
+	-webkit-box-align:$align;
+	-ms-box-align:$align;
+	-o-box-align:$align;
+	-moz-box-align:$align;
+	box-align:$align;
+	-webkit-box-pack:$pack;
+	-ms-box-pack:$pack;
+	-o-box-pack:$pack;
+	-moz-box-pack:$pack;
+	box-pack:$pack;
+}
+
+// 矢印の設定
+@mixin module-triangle($size: 8px, $color: #000, $side: top, $position: 50%, $direction: regular) {
+  position: relative;
+  &::before {
+    content: "";
+    border: solid transparent;
+    display: inline-block;
+    position: absolute;
+    border-width: $size;
+    @if $direction == reverse {
+      @if $side == top {
+        border-bottom-color: $color;
+        margin-left: -$size;
+        left: $position;
+        bottom: -($size * 2);
+      }
+      @elseif $side == right {
+        border-left-color: $color;
+        margin-top: -$size;
+        left: -($size * 2);
+        top: $position;
+      }
+      @elseif $side == bottom {
+        border-top-color: $color;
+        margin-left: -$size;
+        left: $position;
+        top: -($size * 2);
+      }
+      @else {
+        border-right-color: $color;
+        margin-top: -$size;
+        right: -($size * 2);
+        top: $position;
+      }
+    }
+    @else {
+      @if $side == top {
+        border-bottom-color: $color;
+        margin-left: -$size;
+        left: $position;
+        top: -($size * 2);
+      }
+      @elseif $side == right {
+        border-left-color: $color;
+        margin-top: -$size;
+        right: -($size * 2);
+        top: $position;
+      }
+      @elseif $side == bottom {
+        border-top-color: $color;
+        margin-left: -$size;
+        left: $position;
+        bottom: -($size * 2);
+      }
+      @else {
+        border-right-color: $color;
+        margin-top: -$size;
+        left: -($size * 2);
+        top: $position;
+      }
+    }
+  }
+}
+
+//ブラウザのsvgがデザインデータより少々細く見えるのでstrokeで調整、一括色指定用
+@mixin svgfs($color){
+	fill:$color;
+	stroke:$color;
+}
+
+/*
+カラム制御：デフォルトで1～5カラムまで対応
+PC用floatによるカラム制御
+
+html：col_1～5まで対応
+例）3列で折り返し
+<ul class="col_3">
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+
+scss：mixinでカラム設定を自動処理化
+
+.col_3 {
+	@include colmg(30);
+}
+
+数値設定はアイテム間余白（デフォルトは20）;
+※縦、横ともに外側への約は発生しない
+
+*/
+@mixin colmg($mg:20) {
+	@for $i from 1 through 5 {
+		&.col_#{$i} {
+
+			@include sc(pc) {
+				@supports (display:flow-root) {
+					display:flow-root;
+				}
+				@supports not (display:flow-root) {
+					display:block;
+					&:after {
+						content: '';
+						display: block;
+						clear: both;
+					}//&:after
+				}
+				.ie & {//ieは@supportsが効かない + floatの小数点px折り返し対策
+					display:block;
+					width:calc(100% + 1px);
+					&:after {
+						content: '';
+						display: block;
+						clear: both;
+					}//&:after
+				}//.ie &
+				& > * {
+					margin:#{$mg}px 0 0 #{$mg}px;
+					width:calc(100% / #{$i} - #{$mg * ($i - 1) / $i}px);
+					float:left;
+					.ie & {//floatの小数点px折り返し対策
+						width:calc(calc(100% - 1px) / #{$i} - #{$mg * ($i - 1) / $i}px);
+					}//.ie &
+					&:nth-child(#{$i}n+1) {
+						margin-left:0;
+					}//&:nth-child(#{$i}n+1)
+					&:nth-child(-n+#{$i}) {
+						margin-top:0;
+					}//&:nth-child(#{$i}n+1)
+				}//& > *
+			}
+		}//.col_#{$i}
+	}//@for $i from 1 through 10
+}//@mixin colmg($mg:20)
+
+
+// コンテンツ幅
+$mod_w01: 14.60rem;//without 1420
+$mod_w01_min: 10.00rem;//without 1000
+$mod_w_pd01: .20rem;
+$mod_w_pd01_sp: .25rem;
+$mod_w01_sp: calc(100% - #{$mod_w_pd01_sp*2});
+
+
+// コンテンツ幅セット
+%mod_w01 {
+	margin:0 auto;
+	padding-left:$mod_w_pd01;
+	padding-right:$mod_w_pd01;
+	max-width:$mod_w01;
+	width:100%;
+	min-width:$mod_w01_min;
+	box-sizing:border-box;
+
+	@include sc(sp) {
+		width:auto;
+		min-width:0;
+		padding-left:$mod_w_pd01_sp;
+		padding-right:$mod_w_pd01_sp;
+	}
+}
+
+//デバイスフォントのボールド：アンドロイド対策
+%fontbold {
+	font-weight:bold;
+	@include sc(sp) {
+		font-weight:normal;
+		-webkit-text-stroke:0.4px;
+	}
+}
+
+//縦中央揃え
+%vertmiddle {
+	&:before {
+		content:'';
+		display:inline-block;
+		height:100%;
+		vertical-align:middle;
+	}
+	& > * {
+		display:inline-block;
+		vertical-align:middle;
+	}//& > *
+}
+
+
+//縦中央揃え（ベースライン非依存/親要素にHeightが必要）
+/*
+example
+@include vaM;
+*/
+@mixin vaM {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+//テキスト均等揃え(マルチブラウザ対応)
+/*
+example
+@include taJ
+*/
+@mixin taJ {
+	text-align: justify;
+	text-justify: inter-ideograph;
+	.ie & {
+		font-feature-settings : normal;
+	}
+}
+
+
+//汎用破線
+/*
+example
+@include dotted(#COLOR, WidthPX,SpaceingPX,HeightPX); 横破線
+@include dotted(#e6e1d2, 4,4,2);
+*/
+@mixin dotted($color:rgba(#000, 1.0), $stripe: 1, $spacing: 4, $height:1){
+	background-image: linear-gradient(to left, $color, $color ($stripe/($stripe+$spacing))*100%, transparent ($stripe/($stripe+$spacing))*100%, transparent 100%);
+	background-size: ($stripe+$spacing)*1px ($stripe+$spacing)*1px;
+	height: $height*1px;
+ border: none;
+}
+
+//汎用縦破線
+/*
+example
+@include dotted-y(#COLOR, WidthPX,SpaceingPX,LengthPX,); 横破線
+@include dotted-y(#e6e1d2, 4,4,2,10);
+*/
+@mixin dotted-y($color:rgba(#000, 1.0), $stripe: 1, $spacing: 4, $width:1, $height:100){
+	content: '';
+	display: block;
+	margin: auto;
+	width: $width*1px;
+	height: $height*1px;
+	background-image: linear-gradient(to bottom, $color, $color ($stripe/($stripe+$spacing))*100%, transparent ($stripe/($stripe+$spacing))*100%, transparent 100%);
+	background-size: ($stripe+$spacing)*1px ($stripe+$spacing)*1px;
+	background-repeat: repeat-y;
+ border: none;
+}
+
+//グラデーション
+/*
+example
+@include gradient(#StartColor, #EndColor, vertical); 垂直方向
+@include gradient(#StartColor, #EndColor, horizontal); 水平方向
+@include gradient(#StartColor, #EndColor, radial); 円方向
+*/
+@mixin gradient($start-color, $end-color, $orientation) {
+	background: $start-color;
+	@if $orientation == vertical {
+			background: linear-gradient($start-color 0%, $end-color 100%);
+	}
+	@else if $orientation == horizontal {
+			background: linear-gradient(to right,  $start-color 0%,$end-color 100%);
+	}
+	@else {
+			background: radial-gradient(ellipse at center,  $start-color 0%,$end-color 100%);
+	}
+}
+

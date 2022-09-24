@@ -1,0 +1,57 @@
+@charset "utf-8";
+/*////////////////////////////////////////////////////
+
+	トップページ用スタイル
+
+////////////////////////////////////////////////////*/
+#search_wrap{
+	.menuList{
+		margin-bottom: 30px;
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		@include sc(sp){
+			margin-bottom: 15px;
+		}
+		li{
+			width: 30%;
+			@include sc(sp){
+				width: 32%;
+			}
+			a{
+				box-sizing: border-box;
+				display: inline-block;
+				width: 100%;
+				background-color: $tc01;
+				padding: 10px 20px;
+				border-radius: 100px;
+				text-align: center;
+				text-decoration: none;
+				color: $bc03;
+				background-image: -moz-linear-gradient( 0deg, rgb(255,174,0) 0%, rgb(255,204,51) 100%);
+				background-image: -webkit-linear-gradient( 0deg, rgb(255,174,0) 0%, rgb(255,204,51) 100%);
+				background-image: -ms-linear-gradient( 0deg, rgb(255,174,0) 0%, rgb(255,204,51) 100%);
+				box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
+				@include anim; 
+				@include sc(sp){
+					padding: 10px;
+					@include fz(13);
+				}
+				span{
+					display: inline-block;
+					margin-right: 10px;
+					vertical-align: middle;
+					img{
+						height: 15px;
+						width: auto;
+						vertical-align: middle;
+					}
+				}
+				&:hover{
+					background-color: #fdf5df;
+					@include anim;
+				}
+			}
+		}
+	}
+}

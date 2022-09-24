@@ -1,0 +1,943 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Lato");
+.pankuzuLi, .clear {
+  *zoom: 1;
+}
+.pankuzuLi:after, .clear:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.contentBox01 .wrapBox, ul.clm, .btn02 a {
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*
+カラム制御：デフォルトで1～5カラムまで対応
+PC用floatによるカラム制御
+
+html：col_1～5まで対応
+例）3列で折り返し
+<ul class="col_3">
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+
+scss：mixinでカラム設定を自動処理化
+
+.col_3 {
+	@include colmg(30);
+}
+
+数値設定はアイテム間余白（デフォルトは20）;
+※縦、横ともに外側への約は発生しない
+
+*/
+/*
+example
+@include vaM;
+*/
+/*
+example
+@include taJ
+*/
+/*
+example
+@include dotted(#COLOR, WidthPX,SpaceingPX,HeightPX); 横破線
+@include dotted(#e6e1d2, 4,4,2);
+*/
+/*
+example
+@include dotted-y(#COLOR, WidthPX,SpaceingPX,LengthPX,); 横破線
+@include dotted-y(#e6e1d2, 4,4,2,10);
+*/
+/*
+example
+@include gradient(#StartColor, #EndColor, vertical); 垂直方向
+@include gradient(#StartColor, #EndColor, horizontal); 水平方向
+@include gradient(#StartColor, #EndColor, radial); 円方向
+*/
+/*////////////////////////////////////////////////////
+
+    汎用スタイル
+
+////////////////////////////////////////////////////*/
+/**
+ * html5doctor.com Reset Stylesheet v1.6.1 (http://html5doctor.com/html-5-reset-stylesheet/)
+ * Richard Clark (http://richclarkdesign.com)
+ * http://cssreset.com
+ */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: bottom;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+img {
+  border: none;
+  vertical-align: top;
+  zoom: 1;
+}
+
+/*////////////////////////////////////////////////////
+
+	フォント・文字サイズ設定
+
+////////////////////////////////////////////////////*/
+html {
+  font-size: 62.5%;
+}
+
+body {
+  /*font size自動調整をきる*/
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -o-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-family: "Yu Gothic", "游ゴシック", "YuGothic", "游ゴシック体", "ヒラギノ角ゴシック", "Noto Sans", "Hiragino Sans", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.fontLato {
+  font-family: "Lato", sans-serif;
+}
+
+/*////////////////////////////////////////////////////
+
+	共通部分レイアウト
+
+////////////////////////////////////////////////////*/
+/* ------------------------------------------------
+	ヘッダー
+------------------------------------------------ */
+body {
+  position: relative;
+  color: #333;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-sizing: border-box;
+  padding: 20px;
+  z-index: 9999;
+}
+@media screen and (max-width: 767px) {
+  header {
+    display: block;
+  }
+}
+header .spHead {
+  display: none;
+}
+@media screen and (max-width: 767px) {
+  header .spHead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+header .spHead .logo {
+  width: 180px;
+  display: inline-block;
+}
+@media screen and (max-width: 767px) {
+  header .spHead .logo {
+    width: 120px;
+  }
+}
+header .spHead .logo img {
+  width: 100%;
+  height: auto;
+}
+header .spHead .login_btn {
+  margin-left: 15px;
+}
+@media screen and (max-width: 767px) {
+  header .spHead .login_btn {
+    display: block;
+  }
+}
+header .spHead .login_btn a {
+  font-weight: bold;
+  background-image: linear-gradient(90deg, rgb(255, 174, 0) 0%, rgb(255, 204, 51) 100%);
+  background-image: -ms-linear-gradient(90deg, rgb(255, 174, 0) 0%, rgb(255, 204, 51) 100%);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border-radius: 100px;
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+@media screen and (max-width: 767px) {
+  header .spHead .login_btn a {
+    padding: 5px 10px;
+    font-size: 1.4rem;
+  }
+}
+header .spHead .login_btn a:hover {
+  background-image: linear-gradient(180deg, rgb(255, 174, 0) 0%, rgb(255, 204, 51) 100%);
+  background-image: -ms-linear-gradient(180deg, rgb(255, 174, 0) 0%, rgb(255, 204, 51) 100%);
+  transition: all 0.5s ease;
+}
+header .logo {
+  width: 180px;
+  display: inline-block;
+}
+@media screen and (max-width: 767px) {
+  header .logo {
+    display: none;
+  }
+}
+header .logo img {
+  width: 100%;
+  height: auto;
+}
+header nav {
+  margin-left: auto;
+  align-items: center;
+  display: flex;
+}
+header nav .gMenu {
+  box-sizing: border-box;
+  justify-content: flex-end;
+  display: flex;
+}
+@media screen and (max-width: 767px) {
+  header nav .gMenu {
+    margin-top: 10px;
+    background-color: #fff;
+    padding: 10px 20px;
+    font-size: 1.3rem;
+    border-radius: 100px;
+    box-sizing: border-box;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+header nav .gMenu li {
+  padding-right: 40px;
+}
+@media screen and (max-width: 767px) {
+  header nav .gMenu li {
+    padding-right: 5px;
+    border-right: solid 1px #dfecf3;
+  }
+}
+@media screen and (max-width: 767px) {
+  header nav .gMenu li:last-child {
+    border-right: none;
+  }
+}
+header nav .gMenu li a {
+  text-decoration: none;
+  color: #333;
+  transition: all 0.5s ease;
+}
+header nav .gMenu li a:hover {
+  color: #ff9900;
+  transition: all 0.5s ease;
+}
+@media screen and (max-width: 767px) {
+  header nav .sh_box {
+    display: none;
+  }
+}
+header .login_btn {
+  margin-left: 15px;
+}
+@media screen and (max-width: 767px) {
+  header .login_btn {
+    display: none;
+  }
+}
+header .login_btn a {
+  font-weight: bold;
+  background-image: linear-gradient(90deg, rgb(255, 174, 0) 0%, rgb(255, 204, 51) 100%);
+  background-image: -ms-linear-gradient(90deg, rgb(255, 174, 0) 0%, rgb(255, 204, 51) 100%);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border-radius: 100px;
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+header .login_btn a:hover {
+  background-image: linear-gradient(180deg, rgb(255, 174, 0) 0%, rgb(255, 204, 51) 100%);
+  background-image: -ms-linear-gradient(180deg, rgb(255, 174, 0) 0%, rgb(255, 204, 51) 100%);
+  transition: all 0.5s ease;
+}
+
+#mv {
+  background-image: url(/common/img/bg_img01.png), url(/img/mv.jpg);
+  background-position: center bottom, center center;
+  background-repeat: no-repeat;
+  background-size: contain, cover;
+  height: 500px;
+  position: relative;
+  display: flex;
+  padding-top: 120px;
+}
+@media screen and (max-width: 767px) {
+  #mv {
+    padding-top: 155px;
+    height: 100px;
+    background-size: contain, contain;
+    background-position: center bottom, bottom center;
+    background-color: #cee9f9;
+  }
+}
+#mv div {
+  width: 50%;
+}
+#mv .cont {
+  box-sizing: border-box;
+  padding: 50px;
+}
+@media screen and (max-width: 767px) {
+  #mv .cont {
+    padding: 0;
+  }
+}
+#mv .cont .logo {
+  width: 80%;
+  margin: 0 auto;
+}
+#mv .cont .logo img {
+  width: 100%;
+  height: auto;
+}
+#mv .cont .lead {
+  text-align: center;
+  margin-top: 30px;
+  color: #333;
+}
+@media screen and (max-width: 767px) {
+  #mv .cont .lead {
+    display: none;
+  }
+}
+
+.sp_lead {
+  color: #fff;
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: 15px;
+  display: none;
+}
+@media screen and (max-width: 767px) {
+  .sp_lead {
+    display: block;
+  }
+}
+
+/* ------------------------------------------------
+	フッター
+------------------------------------------------ */
+footer {
+  background-color: #f3f3f3;
+  box-sizing: border-box;
+  padding: 20px 0;
+  text-align: center;
+}
+footer p {
+  font-size: 1.2rem;
+  color: #999999;
+}
+
+/*////////////////////////////////////////////////////
+
+	汎用スタイル
+	全頁で使用可能な汎用スタイル
+	・見出し
+	・リンク
+	・リスト
+	・記述リスト
+	・テーブル
+	・囲み枠
+	・汎用レイアウトセット
+
+////////////////////////////////////////////////////*/
+.hidden {
+  display: none;
+}
+
+/* ------------------------------------------------
+	その他
+------------------------------------------------ */
+.hide {
+  display: none;
+}
+
+.sh_box {
+  position: relative;
+  box-sizing: border-box;
+  width: 400px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 767px) {
+  .sh_box {
+    width: 100%;
+  }
+}
+.sh_box form {
+  width: 100%;
+}
+.sh_box.head {
+  width: 225px;
+}
+.sh_box input[name=search] {
+  box-sizing: border-box;
+  padding: 10px 35px 10px 10px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 30px;
+  border: 2px solid rgba(0, 0, 0, 0);
+}
+.sh_box input[name=search].type02 {
+  padding: 13px 35px 13px 13px;
+  margin: 0 auto;
+  background-image: -ms-linear-gradient(0deg, rgb(255, 174, 0) 0%, rgb(255, 204, 51) 100%);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
+}
+.sh_box input.type_01::-ms-clear {
+  display: none;
+}
+.sh_box input[name=search]:focus {
+  box-sizing: border-box;
+  border: 2px solid #ffca31;
+  outline: 2px;
+}
+.sh_box .search_button_hd {
+  position: absolute;
+  right: 10px;
+  padding: 3px;
+  box-sizing: border-box;
+  top: 9px;
+  background: url(/common/img/search_btn01.png) no-repeat;
+  border: 0px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  color: rgba(0, 0, 0, 0);
+}
+.sh_box .search_button_hd.type02 {
+  top: 12px;
+}
+
+/* ------------------------------------------------
+	スペース
+------------------------------------------------ */
+.space01 {
+  height: 30px;
+  clear: both;
+  display: block;
+}
+
+.space02 {
+  height: 20px;
+  clear: both;
+  display: block;
+}
+
+/* ------------------------------------------------
+	パンくずリスト
+------------------------------------------------ */
+.pankuzuLi {
+  padding-top: 10px;
+  width: 1000px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+}
+@media screen and (max-width: 767px) {
+  .pankuzuLi {
+    display: none;
+  }
+}
+.pankuzuLi li {
+  position: relative;
+  padding-right: 15px;
+  float: left;
+}
+.pankuzuLi li a {
+  color: #ffca31;
+}
+.pankuzuLi li:after {
+  right: 0;
+  content: "";
+  height: 0;
+  position: absolute;
+  width: 0px;
+  border-top: 3px solid transparent;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-left-color: #696969;
+  top: 50%;
+  margin-top: -3px;
+  margin-bottom: 30px;
+}
+.pankuzuLi li:last-child:after {
+  display: none;
+  content: none;
+}
+
+/* ------------------------------------------------
+	見出し
+------------------------------------------------ */
+/* ------------------------------------------------
+	p
+------------------------------------------------ */
+/* ------------------------------------------------
+	リンク
+------------------------------------------------ */
+.btn02 {
+  text-align: center;
+}
+.btn02 a {
+  display: inline-block;
+  text-align: center;
+  background: #ffca31;
+  padding: 15px 50px;
+  border-radius: 3px;
+  margin: 0 auto;
+  color: #fff;
+}
+@media screen and (max-width: 767px) {
+  .btn02 a {
+    padding: 15px;
+  }
+}
+.btn02 a i {
+  display: inline-block;
+  width: 20px;
+  padding-right: 10px;
+}
+.btn02 a i img {
+  width: 100%;
+  vertical-align: middle;
+}
+.btn02 a:hover {
+  transition: all 0.5s ease;
+}
+
+/* ------------------------------------------------
+	強調
+------------------------------------------------ */
+/* ------------------------------------------------
+	リスト
+------------------------------------------------ */
+/* ベーシックなリスト */
+/* 注釈用のリスト */
+.li_caution01 li {
+  padding-left: 1em;
+  text-indent: -1em;
+  margin-bottom: 5px;
+  font-size: 1.4rem;
+}
+.li_caution01 li:last-child {
+  margin-bottom: 0;
+}
+
+/* リストを2カラムで表示 */
+ul.clm {
+  width: 50%;
+  float: left;
+  padding-right: 10px;
+}
+ul.clm:last-child {
+  padding-right: 0;
+}
+
+.salonIndex {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+@media screen and (max-width: 767px) {
+  .salonIndex {
+    flex-direction: column;
+  }
+}
+.salonIndex > li {
+  box-sizing: border-box;
+  padding: 20px;
+  width: 32%;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.11);
+  margin-right: 2%;
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 767px) {
+  .salonIndex > li {
+    width: 100%;
+  }
+}
+.salonIndex > li:nth-child(3n) {
+  margin-right: 0;
+}
+.salonIndex > li .titWrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.salonIndex > li .titWrap .img {
+  margin-right: 10px;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  border: solid 1px #ccc;
+}
+.salonIndex > li .titWrap .tit h4 {
+  font-size: 1.5rem;
+  color: #333;
+}
+.salonIndex > li .titWrap .tit .artist {
+  display: flex;
+  font-size: 12px;
+}
+.salonIndex > li .titWrap .tit .artist .starRat {
+  display: flex;
+  margin-right: 5px;
+}
+.salonIndex > li .titWrap .tit .artist .starRat .starImg {
+  position: relative;
+  width: 5em;
+  height: 1.5em;
+}
+.salonIndex > li .titWrap .tit .artist .starRat .starImg .starRat-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  overflow: hidden;
+  color: #ffb859;
+}
+.salonIndex > li .titWrap .tit .artist .starRat .starImg .starRat-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  color: #f2f2f2;
+}
+.salonIndex > li .titWrap .tit .artist .profile-comment-count i {
+  width: 15px;
+  display: inline-block;
+  padding-right: 5px;
+}
+.salonIndex > li .titWrap .tit .artist .profile-comment-count i img {
+  width: 100%;
+  height: auto;
+}
+.salonIndex > li .titWrap .tit .artist .profile-comment-count a {
+  color: #ffca31;
+}
+
+.planList {
+  margin-bottom: 15px;
+}
+.planList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: #f8f5ef;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-size: 1.3rem;
+}
+.planList li:last-child {
+  margin-bottom: 0;
+}
+.planList li .txt {
+  width: 70%;
+}
+.planList li .price {
+  color: #ff9900;
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media screen and (max-width: 767px) {
+  .foot {
+    flex-direction: column;
+  }
+}
+.foot .map {
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+.foot .map i {
+  width: 10px;
+  margin-right: 3px;
+  display: inline-block;
+}
+.foot .map i img {
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+}
+.foot .map span {
+  vertical-align: middle;
+  display: inline-block;
+}
+@media screen and (max-width: 767px) {
+  .foot .btn {
+    margin-top: 15px;
+  }
+}
+.foot .btn a {
+  background-image: linear-gradient(90deg, rgb(255, 174, 0) 0%, rgb(255, 204, 51) 100%);
+  background-image: -ms-linear-gradient(90deg, rgb(255, 174, 0) 0%, rgb(255, 204, 51) 100%);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
+  box-sizing: border-box;
+  padding: 5px 20px;
+  border-radius: 100px;
+  display: inline-block;
+  font-size: 1.3rem;
+  color: #fff;
+  text-decoration: none;
+}
+@media screen and (max-width: 767px) {
+  .foot .btn a {
+    padding: 10px 30px;
+  }
+}
+
+.pageNub {
+  display: flex;
+  justify-content: flex-end;
+}
+.pageNub .prev, .pageNub .next {
+  width: 25px;
+}
+.pageNub .prev a img, .pageNub .next a img {
+  opacity: 1;
+  width: 100%;
+  height: auto;
+  transition: all 0.5s ease;
+}
+.pageNub .prev a:hover img, .pageNub .next a:hover img {
+  opacity: 0.5;
+  transition: all 0.5s ease;
+}
+.pageNub .numList {
+  margin: 0 15px;
+  display: flex;
+}
+.pageNub .numList li {
+  margin-right: 15px;
+}
+.pageNub .numList li:last-child {
+  margin-right: 0;
+}
+.pageNub .numList li a {
+  color: #e6d1a8;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+.pageNub .numList li a.active, .pageNub .numList li a:hover {
+  color: #ff9900;
+  transition: all 0.5s ease;
+}
+
+/* ------------------------------------------------
+	テーブル
+------------------------------------------------ */
+/* ------------------------------------------------
+	汎用レイアウト
+------------------------------------------------ */
+.contentBox01.style01 {
+  background-color: #ffca31;
+}
+.contentBox01 .wrapBox {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 50px 30px;
+}
+@media screen and (max-width: 767px) {
+  .contentBox01 .wrapBox {
+    width: 100%;
+    padding: 20px 15px;
+  }
+}
+
+/*////////////////////////////////////////////////////
+
+	トップページ用スタイル
+
+////////////////////////////////////////////////////*/
+#search_wrap .menuList {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+@media screen and (max-width: 767px) {
+  #search_wrap .menuList {
+    margin-bottom: 15px;
+  }
+}
+#search_wrap .menuList li {
+  width: 30%;
+}
+@media screen and (max-width: 767px) {
+  #search_wrap .menuList li {
+    width: 32%;
+  }
+}
+#search_wrap .menuList li a {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 100px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  background-image: -ms-linear-gradient(0deg, rgb(255, 174, 0) 0%, rgb(255, 204, 51) 100%);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
+  transition: all 0.5s ease;
+}
+@media screen and (max-width: 767px) {
+  #search_wrap .menuList li a {
+    padding: 10px;
+    font-size: 1.3rem;
+  }
+}
+#search_wrap .menuList li a span {
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+#search_wrap .menuList li a span img {
+  height: 15px;
+  width: auto;
+  vertical-align: middle;
+}
+#search_wrap .menuList li a:hover {
+  background-color: #fdf5df;
+  transition: all 0.5s ease;
+}
+
+/*////////////////////////////////////////////////////
+
+	ページごとの個別の設定
+
+////////////////////////////////////////////////////*//*# sourceMappingURL=style.css.map */

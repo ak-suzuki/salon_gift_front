@@ -1,0 +1,47 @@
+@charset "utf-8";
+/*////////////////////////////////////////////////////
+
+	フォント・文字サイズ設定
+
+////////////////////////////////////////////////////*/
+/// 
+/// 
+
+//デバイスフォント
+$default: "游ゴシック","游ゴシック体","Yu Gothic",YuGothic,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro","メイリオ","Meiryo",verdana,"Osaka",sans-serif;
+
+html {
+	font-size: 62.5%;
+	
+}
+// フォントサイズのミックスイン指定
+
+//フォントサイズ1/100rem対応
+// 例：@include fz(10);
+@mixin fz($size){
+	font-size: ($size / 10) * 1rem;
+}
+
+body {
+	/*font size自動調整をきる*/
+	-webkit-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-o-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	// font-family: 'Noto Sans', sans-serif;
+	font-family: 'Yu Gothic', '游ゴシック', 'YuGothic', '游ゴシック体','ヒラギノ角ゴシック', 'Noto Sans', 'Hiragino Sans', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', 'メイリオ', 'Meiryo', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+	@include fz(15);
+	line-height: 1.6;
+}
+
+// 英字フォントの設定
+@import url('https://fonts.googleapis.com/css?family=Lato');
+.fontLato{
+	font-family: 'Lato', sans-serif;
+}
+
+@mixin f_default($weight:400) {
+	font-family: $default;
+	font-weight:$weight;
+}

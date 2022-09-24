@@ -1,0 +1,455 @@
+@charset "utf-8";
+/*////////////////////////////////////////////////////
+
+	汎用スタイル
+	全頁で使用可能な汎用スタイル
+	・見出し
+	・リンク
+	・リスト
+	・記述リスト
+	・テーブル
+	・囲み枠
+	・汎用レイアウトセット
+
+////////////////////////////////////////////////////*/
+.clear{
+	@extend %clearfix;
+}
+.hidden{
+	display: none;
+}
+/* ------------------------------------------------
+	その他
+------------------------------------------------ */
+.hide{
+	display: none;
+}
+
+.sh_box{
+	position: relative;
+	box-sizing: border-box;
+	width: 400px;
+	margin: 0 auto;
+	@include sc(sp){
+		width: 100%;
+	}
+	form{
+		width: 100%;
+	}
+	&.head{
+		width: 225px;
+	}
+	input[name='search']{
+		box-sizing: border-box;
+		padding: 10px 35px 10px 10px;
+		width: 100%;
+		margin: 0 auto;
+		border-radius: 30px;
+		border: 2px solid rgba($color: #000000, $alpha: 0);
+		&.type02 {
+			padding: 13px 35px 13px 13px;
+			margin: 0 auto;
+			background-image: -moz-linear-gradient( 0deg, rgb(255,174,0) 0%, rgb(255,204,51) 100%);
+			background-image: -webkit-linear-gradient( 0deg, rgb(255,174,0) 0%, rgb(255,204,51) 100%);
+			background-image: -ms-linear-gradient( 0deg, rgb(255,174,0) 0%, rgb(255,204,51) 100%);
+			box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
+		}
+	}
+	input.type_01::-ms-clear{
+		display: none;
+	}
+	input[name='search']:focus {
+		box-sizing: border-box;
+		border: 2px solid $tc02;
+		outline: 2px;
+	  }
+	
+	.search_button_hd{
+		position: absolute;
+		right: 10px;
+		padding: 3px;
+		box-sizing: border-box;
+		top: 9px;
+		background:url(/common/img/search_btn01.png)no-repeat;
+		border:0px;
+		width:20px;
+		height:20px;
+		background-size: contain;
+		color:#ffffff;
+		font-weight:bold;
+		text-align:center;
+		color: rgba($color: #000000, $alpha: 0);
+		&.type02 {
+			top: 12px;
+		}
+	}
+}
+
+
+/* ------------------------------------------------
+	スペース
+------------------------------------------------ */
+.space01 {
+	height: 30px;
+	clear: both;
+	display: block;
+}
+.space02 {
+	height: 20px;
+	clear: both;
+	display: block;
+}
+
+/* ------------------------------------------------
+	パンくずリスト
+------------------------------------------------ */
+
+.pankuzuLi{
+	padding-top: 10px;
+	width: 1000px;
+	margin: 0 auto;
+	@include fz(12);
+	@include sc(sp){
+		display: none;
+	}
+	@extend %clearfix;
+	li{
+		position: relative;
+		padding-right: 15px;
+		float: left;
+		a{
+			color:$tc02;
+		}
+		&:after{
+		    right: 0;
+		    content: '';
+		    height: 0;
+		    position: absolute;
+		    width: 0px;
+		    border-top: 3px solid transparent;
+		    border-left: 5px solid transparent;
+		    border-right: 5px solid transparent;
+		    border-bottom: 3px solid transparent;
+		    border-left-color: #696969;
+		    top: 50%;
+		    margin-top: -3px;
+		    margin-bottom: 30px;
+		    
+		}
+		&:last-child{
+			&:after{
+				display: none;
+				content:none;
+			}
+	    }
+	}
+}
+/* ------------------------------------------------
+	見出し
+------------------------------------------------ */
+
+/* ------------------------------------------------
+	p
+------------------------------------------------ */
+
+/* ------------------------------------------------
+	リンク
+------------------------------------------------ */
+
+.btn02{
+	text-align: center;
+	a{
+		display: inline-block;
+		text-align: center;
+		background: $tc02;
+		padding: 15px 50px;
+		@extend %box-sizing;
+		border-radius: 3px;
+		margin: 0 auto;
+		color:$bcff;
+		@include sc(sp){
+			padding: 15px;
+		}
+		i{
+			display: inline-block;
+    		width: 20px;
+			padding-right: 10px;
+			img{
+				width: 100%;
+				vertical-align: middle;
+			}
+		}
+		&:hover{
+			@include anim;
+		}
+	}
+}
+/* ------------------------------------------------
+	強調
+------------------------------------------------ */
+
+/* ------------------------------------------------
+	リスト
+------------------------------------------------ */
+/* ベーシックなリスト */
+.li_basic01 {
+	li {
+		
+	}
+}
+
+/* 注釈用のリスト */
+.li_caution01{
+	li{
+		padding-left: 1em;
+		text-indent: -1em;
+		margin-bottom: 5px;
+		@include fz(14);
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+/* リストを2カラムで表示 */
+ul.clm {
+	width: 50%;
+	@extend %box-sizing;
+	float: left;
+	padding-right: 10px;
+	&:last-child {
+		padding-right: 0;
+	}
+}
+
+// サロンインデックス
+.salonIndex{
+	display: flex;
+	flex-wrap: wrap;
+
+	// justify-content: space-between;
+	width: 100%;
+	@include sc(sp){
+		flex-direction: column;
+	}
+	>li{
+		box-sizing: border-box;
+		padding: 20px;
+		width: 32%;
+		border-radius: 10px;
+		background-color: rgb(255, 255, 255);
+		box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.11);
+		margin-right: 2%;
+		margin-bottom: 20px;
+		@include sc(sp){
+			width: 100%;
+		}
+		&:nth-child(3n){
+			margin-right: 0;
+		}
+		.titWrap{
+			display: flex;
+			align-items: center;
+			margin-bottom: 10px;
+			.img{
+				margin-right: 10px;
+				width: 65px;
+				height:65px;
+				border-radius:50%;
+				background-position: center;
+				background-size: contain;
+				border: solid 1px $bccc;
+			}
+			.tit{
+				h4{
+					@include fz(15);
+					color: $bc03;
+				}
+				.artist{
+					display: flex;
+					font-size: 12px;
+					.starRat {
+						display: flex;
+						margin-right: 5px;
+						.starImg {
+							position: relative;
+							width: 5em;
+							height: 1.5em;
+							.starRat-front {
+								position: absolute;
+								top: 0;
+								left: 0;
+								z-index: 2;
+								overflow: hidden;
+								color: #ffb859;
+							}
+							.starRat-back {
+								position: absolute;
+								top: 0;
+								left: 0;
+								z-index: 1;
+								color: #f2f2f2;
+							}
+						}
+					}
+					.profile-comment-count{
+						i{
+							width: 15px;
+							display: inline-block;
+							padding-right: 5px;
+							img{
+								width: 100%;
+								height: auto;
+							}
+						}
+						a{
+							color: $tc02;
+						}
+					}
+				}
+			}
+			
+		}
+	}
+}
+.planList{
+	margin-bottom: 15px;
+	li{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		box-sizing: border-box;
+		border-radius: 5px;
+		background-color: #f8f5ef;
+		padding: 10px;
+		margin-bottom: 5px;
+		@include fz(13);
+		&:last-child{
+			margin-bottom: 0;
+		}
+		.txt{
+			width: 70%;
+		}
+		.price{
+			color: $bcy00;
+		}
+	}
+}
+.foot{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	@include sc(sp){
+		flex-direction: column;
+	}
+	.map{
+		@include fz(12);
+		vertical-align: middle;
+		i{
+			width: 10px;
+			margin-right: 3px;
+			display: inline-block;
+			img{
+				vertical-align: middle;
+				width: 100%;
+				height: auto;
+			}
+		}
+		span{
+			vertical-align: middle;
+			display: inline-block;
+		}
+	}
+	.btn {
+		@include sc(sp){
+			margin-top: 15px;
+		}
+		a{
+			background-image: linear-gradient( 90deg, rgb(255,174,0) 0%, rgb(255,204,51) 100%);
+			background-image: -moz-linear-gradient( 90deg, rgb(255,174,0) 0%, rgb(255,204,51) 100%);
+			background-image: -webkit-linear-gradient( 90deg, rgb(255,174,0) 0%, rgb(255,204,51) 100%);
+			background-image: -ms-linear-gradient( 90deg, rgb(255,174,0) 0%, rgb(255,204,51) 100%);
+			box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
+			box-sizing: border-box;
+			padding: 5px 20px;
+			border-radius: 100px;
+			display: inline-block;
+			@include fz(13);
+			color: $tc01;
+			text-decoration: none;
+			@include sc(sp){
+				padding: 10px 30px;
+			}
+		}
+	  }
+	  
+}
+.pageNub{
+	display: flex;
+	justify-content: flex-end;
+	.prev,.next{
+		width: 25px;
+		a{
+			img{
+				opacity: 1;
+				width: 100%;
+				height: auto;
+				@include anim;
+			}
+			&:hover{
+				img{
+					opacity: 0.5;
+					@include anim;
+				}
+			}
+
+		}
+	}
+	.numList{
+		margin: 0 15px;
+		display: flex;
+		li{
+			margin-right: 15px;
+			&:last-child{
+				margin-right: 0;
+			}
+			a{
+				color: #e6d1a8;
+				text-decoration: none;
+				@include anim;
+				&.active,&:hover{
+					color: $bcy00;
+					@include anim;
+				}
+			}
+		}
+	
+	}
+}
+
+/* ------------------------------------------------
+	テーブル
+------------------------------------------------ */
+
+/* ------------------------------------------------
+	汎用レイアウト
+------------------------------------------------ */
+
+.contentBox01{
+	&.style01{
+		background-color: $tc02;
+	}
+	.wrapBox{
+		width: 1000px;
+		margin: 0 auto;
+		padding: 50px 30px;
+		@extend %box-sizing;
+		@include sc(sp){
+			width: 100%;
+			padding: 20px 15px;
+		}
+	}
+
+}
+
+
+
