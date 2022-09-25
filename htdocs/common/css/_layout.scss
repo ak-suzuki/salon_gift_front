@@ -108,6 +108,9 @@ header{
 			box-sizing: border-box;
 			justify-content: flex-end;
 			display: flex;
+			@include sc(tab){
+				@include fz(13);
+			}
 			@include sc(sp){
 				margin-top: 10px;
 				background-color: $tc01;
@@ -196,6 +199,9 @@ header{
 	position: relative;
 	display: flex;
 	padding-top: 120px;
+	@include sc(tab){
+		height: 320px;
+	}
 	@include sc(sp){
 		padding-top: 155px;
 		height: 100px;
@@ -209,6 +215,9 @@ header{
 	.cont{
 		box-sizing: border-box;
 		padding: 50px;
+		@include sc(tab){
+			padding: 10px 20px;
+		}
 		@include sc(sp){
 			padding: 0;
 		}

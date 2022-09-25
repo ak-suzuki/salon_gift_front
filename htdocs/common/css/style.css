@@ -315,6 +315,11 @@ header nav .gMenu {
   justify-content: flex-end;
   display: flex;
 }
+@media screen and (max-width: 1020px) {
+  header nav .gMenu {
+    font-size: 1.3rem;
+  }
+}
 @media screen and (max-width: 767px) {
   header nav .gMenu {
     margin-top: 10px;
@@ -404,6 +409,11 @@ header .login_btn a:hover {
   display: flex;
   padding-top: 120px;
 }
+@media screen and (max-width: 1020px) {
+  #mv {
+    height: 320px;
+  }
+}
 @media screen and (max-width: 767px) {
   #mv {
     padding-top: 155px;
@@ -419,6 +429,11 @@ header .login_btn a:hover {
 #mv .cont {
   box-sizing: border-box;
   padding: 50px;
+}
+@media screen and (max-width: 1020px) {
+  #mv .cont {
+    padding: 10px 20px;
+  }
 }
 @media screen and (max-width: 767px) {
   #mv .cont {
@@ -753,6 +768,11 @@ ul.clm:last-child {
   flex-wrap: wrap;
   width: 100%;
 }
+@media screen and (max-width: 1020px) {
+  .salonIndex {
+    justify-content: space-between;
+  }
+}
 @media screen and (max-width: 767px) {
   .salonIndex {
     flex-direction: column;
@@ -767,6 +787,11 @@ ul.clm:last-child {
   box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.11);
   margin-right: 2%;
   margin-bottom: 20px;
+}
+@media screen and (max-width: 1020px) {
+  .salonIndex > li {
+    width: 48%;
+  }
 }
 @media screen and (max-width: 767px) {
   .salonIndex > li {
@@ -970,6 +995,7 @@ ul.clm:last-child {
 }
 @media screen and (max-width: 767px) {
   .headWrap {
+    padding-top: 210px;
     height: 140px;
   }
 }

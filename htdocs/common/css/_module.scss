@@ -301,8 +301,11 @@ ul.clm {
 	display: flex;
 	flex-wrap: wrap;
 
-	// justify-content: space-between;
 	width: 100%;
+	@include sc(tab){
+		justify-content: space-between;
+		
+	}
 	@include sc(sp){
 		flex-direction: column;
 	}
@@ -315,6 +318,9 @@ ul.clm {
 		box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.11);
 		margin-right: 2%;
 		margin-bottom: 20px;
+		@include sc(tab){
+			width: 48%;
+		}
 		@include sc(sp){
 			width: 100%;
 		}
@@ -512,6 +518,7 @@ span{
 		height: 200px;
 	}
 	@include sc(sp){
+		padding-top: 210px;
 		height: 140px;
 	}
 	.titWrap{
