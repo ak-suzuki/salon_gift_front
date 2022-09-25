@@ -24,6 +24,11 @@ header{
 	box-sizing: border-box;
 	padding: 20px;
 	z-index: 9999;
+	&.under{
+		@include sc(sp){
+			background-color: #f0ede7;
+		}
+	}
 	@include sc(sp){
 		display: block;
 	}
@@ -79,6 +84,7 @@ header{
 			}
 		}
 	}
+
 	.logo{
 		width: 180px;
 		display: inline-block;
@@ -110,7 +116,7 @@ header{
 				justify-content: space-between;
 			}
 			li{
-				padding-right: 40px;
+				padding-right: 50px;
 				@include sc(sp){
 					padding-right: 5px;
 					border-right: solid 1px #dfecf3;
@@ -131,6 +137,7 @@ header{
 				}
 			}
 		}
+		
 		.sh_box{
 			@include sc(sp){
 				display: none;
