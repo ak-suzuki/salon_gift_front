@@ -507,10 +507,15 @@ span{
 	background-size:contain;
 	height: 300px;
 	padding-top: 200px;
+	@include sc(tab){
+		padding-top: 150px;
+		height: 200px;
+	}
 	@include sc(sp){
 		height: 140px;
 	}
 	.titWrap{
+		box-sizing: border-box;
 		&.sp{
 			display: none;
 			@include sc(sp){
@@ -569,6 +574,9 @@ span{
 	position: relative;
 	width: 1000px;
 	margin: 0 auto 30px;
+	@include sc(tab){
+		width: 650px;
+	}
 	@include sc(sp){
 		width: 100%;
 		display: flex;
@@ -583,6 +591,10 @@ span{
 		background-position: center;
 		background-size: cover;
 		border: solid 1px $bccc;
+		@include sc(tab){
+			width: 650px;
+			height: 300px;
+		}
 		@include sc(sp){
 			top:0;
 			width: 300px;
@@ -600,7 +612,11 @@ span{
 		width: 1000px;
 		margin: 0 auto;
 		padding: 50px 30px;
+		box-sizing: border-box;
 		@extend %box-sizing;
+		@include sc(tab){
+			width: 90%;
+		}
 		@include sc(sp){
 			width: 100%;
 			padding: 20px 15px;
@@ -630,12 +646,16 @@ span{
 	.titWrap{
 		margin-bottom: 0;
 	}
+	@include sc(tab){
+		width: 100%;
+	}
 	@include sc(sp){
 		display: none;
 	}
 }
 
 .titWrap{
+	width: 100%;
 	display: flex;
 	align-items: center;
 	margin-bottom: 10px;
@@ -647,10 +667,11 @@ span{
 		background-position: center;
 		background-size: contain;
 		border: solid 1px $bccc;
+		
 	}
 	.tit{
 		@include sc(sp){
-			width: 75%;
+			width: 70%;
 		}
 		h4{
 			@include fz(15);
@@ -815,20 +836,53 @@ span{
 			align-items: flex-start;
 			@include fz(13);
 			color: #8e8e8e;
+			@include sc(sp){
+				flex-direction: column;
+			}
+			.titWrap{
+				@include sc(sp){
+					margin-bottom: 0;
+				}
+			}
+			.day{
+				@include sc(sp){
+					width: 100%;
+					margin-bottom: 15px;
+					p{
+						text-align: right;
+					}
+				}
+			}
 		}
 		.comment{
 			display: flex;
 			box-sizing: border-box;
 			width: 100%;
+			@include sc(sp){
+				flex-direction: column;
+			}
 			.com{
 				width: 50%;
 				border-right: solid 1px #d7d7d7;
 				padding-right: 20px;
+				@include sc(sp){
+					width: 100%;
+					padding-right: 0;
+					border-right: none;
+					border-bottom: solid 1px #d7d7d7;
+					margin-bottom: 15px;
+					padding-bottom: 15px;
+
+				}
 			}
 			.menu{
 				width: 50%;
 				padding-left: 20px;
 				color: $bcy00;
+				@include sc(sp){
+					width: 100%;
+					padding-left: 0;
+				}
 			}
 		}
 	}

@@ -88,6 +88,9 @@ header{
 	.logo{
 		width: 180px;
 		display: inline-block;
+		@include sc(tab){
+			width: 100px;
+		}
 		@include sc(sp){
 			display: none;
 		}
@@ -113,16 +116,23 @@ header{
 				border-radius: 100px;
 				box-sizing: border-box;
 				width: 100%;
-				justify-content: space-between;
+				justify-content: space-around;
 			}
 			li{
-				padding-right: 50px;
+				padding-right: 30px;
+				@include sc(pcW){
+					padding-right: 50px;
+				}
+				@include sc(tab){
+					padding-right: 10px;
+				}
 				@include sc(sp){
 					padding-right: 5px;
 					border-right: solid 1px #dfecf3;
 				}
 				&:last-child{
 					@include sc(sp){
+						padding-right: 0;
 						border-right: none;
 					}
 				}

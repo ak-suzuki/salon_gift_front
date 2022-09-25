@@ -291,6 +291,11 @@ header .logo {
   width: 180px;
   display: inline-block;
 }
+@media screen and (max-width: 1020px) {
+  header .logo {
+    width: 100px;
+  }
+}
 @media screen and (max-width: 767px) {
   header .logo {
     display: none;
@@ -319,11 +324,21 @@ header nav .gMenu {
     border-radius: 100px;
     box-sizing: border-box;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 }
 header nav .gMenu li {
-  padding-right: 50px;
+  padding-right: 30px;
+}
+@media screen and (min-width: 1201px) {
+  header nav .gMenu li {
+    padding-right: 50px;
+  }
+}
+@media screen and (max-width: 1020px) {
+  header nav .gMenu li {
+    padding-right: 10px;
+  }
 }
 @media screen and (max-width: 767px) {
   header nav .gMenu li {
@@ -333,6 +348,7 @@ header nav .gMenu li {
 }
 @media screen and (max-width: 767px) {
   header nav .gMenu li:last-child {
+    padding-right: 0;
     border-right: none;
   }
 }
@@ -946,10 +962,19 @@ ul.clm:last-child {
   height: 300px;
   padding-top: 200px;
 }
+@media screen and (max-width: 1020px) {
+  .headWrap {
+    padding-top: 150px;
+    height: 200px;
+  }
+}
 @media screen and (max-width: 767px) {
   .headWrap {
     height: 140px;
   }
+}
+.headWrap .titWrap {
+  box-sizing: border-box;
 }
 .headWrap .titWrap.sp {
   display: none;
@@ -1007,6 +1032,11 @@ ul.clm:last-child {
   width: 1000px;
   margin: 0 auto 30px;
 }
+@media screen and (max-width: 1020px) {
+  .leadArea {
+    width: 650px;
+  }
+}
 @media screen and (max-width: 767px) {
   .leadArea {
     width: 100%;
@@ -1023,6 +1053,12 @@ ul.clm:last-child {
   background-position: center;
   background-size: cover;
   border: solid 1px #ccc;
+}
+@media screen and (max-width: 1020px) {
+  .leadArea .imgBox {
+    width: 650px;
+    height: 300px;
+  }
 }
 @media screen and (max-width: 767px) {
   .leadArea .imgBox {
@@ -1041,6 +1077,12 @@ ul.clm:last-child {
   width: 1000px;
   margin: 0 auto;
   padding: 50px 30px;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 1020px) {
+  .contentBox01 .wrapBox {
+    width: 90%;
+  }
 }
 @media screen and (max-width: 767px) {
   .contentBox01 .wrapBox {
@@ -1072,6 +1114,11 @@ ul.clm:last-child {
 .inBox .titWrap {
   margin-bottom: 0;
 }
+@media screen and (max-width: 1020px) {
+  .inBox {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 767px) {
   .inBox {
     display: none;
@@ -1079,6 +1126,7 @@ ul.clm:last-child {
 }
 
 .titWrap {
+  width: 100%;
   display: flex;
   align-items: center;
   margin-bottom: 10px;
@@ -1094,7 +1142,7 @@ ul.clm:last-child {
 }
 @media screen and (max-width: 767px) {
   .titWrap .tit {
-    width: 75%;
+    width: 70%;
   }
 }
 .titWrap .tit h4 {
@@ -1261,20 +1309,60 @@ ul.clm:last-child {
   font-size: 1.3rem;
   color: #8e8e8e;
 }
+@media screen and (max-width: 767px) {
+  .reviewPic li .tit_day {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 767px) {
+  .reviewPic li .tit_day .titWrap {
+    margin-bottom: 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .reviewPic li .tit_day .day {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .reviewPic li .tit_day .day p {
+    text-align: right;
+  }
+}
 .reviewPic li .comment {
   display: flex;
   box-sizing: border-box;
   width: 100%;
+}
+@media screen and (max-width: 767px) {
+  .reviewPic li .comment {
+    flex-direction: column;
+  }
 }
 .reviewPic li .comment .com {
   width: 50%;
   border-right: solid 1px #d7d7d7;
   padding-right: 20px;
 }
+@media screen and (max-width: 767px) {
+  .reviewPic li .comment .com {
+    width: 100%;
+    padding-right: 0;
+    border-right: none;
+    border-bottom: solid 1px #d7d7d7;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+  }
+}
 .reviewPic li .comment .menu {
   width: 50%;
   padding-left: 20px;
   color: #ff9900;
+}
+@media screen and (max-width: 767px) {
+  .reviewPic li .comment .menu {
+    width: 100%;
+    padding-left: 0;
+  }
 }
 
 /*////////////////////////////////////////////////////
