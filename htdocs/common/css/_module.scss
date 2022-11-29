@@ -18,9 +18,49 @@
 .hidden{
 	display: none;
 }
+
+.mt_10{
+	margin-top: 10px;
+}
+.mt_20{
+	margin-top: 20px;
+}
+.mt_30{
+	margin-top: 30px;
+}
+.mt_40{
+	margin-top: 40px;
+}
+.mt_50{
+	margin-top: 50px;
+}
+.mt_60{
+	margin-top: 60px;
+}
+.mt_70{
+	margin-top: 70px;
+}
+
+.alignC{
+	text-align: center;
+}
+
+.alignL{
+	text-align-last: left;
+}
+
+.alignR{
+	text-align: right;
+}
+
+a{
+	text-decoration: none;
+	color: $tc02;
+}
 /* ------------------------------------------------
 	見出し
 ------------------------------------------------ */
+
 .tit01{
 	@include fz(18);
 	color: $tc01;
@@ -63,6 +103,11 @@
 			height: auto;
 		}
 	}
+}
+
+.tit03{
+	margin-bottom: 20px;
+	font-size: 18px;
 }
 
 /* ------------------------------------------------
@@ -513,6 +558,18 @@ span{
 	background-size:contain;
 	height: 300px;
 	padding-top: 200px;
+	&.style01{
+		height: 200px;
+		padding-top: 150px;
+		@include sc(tab){
+			height: auto;
+		padding-top: 100px;
+		}
+		@include sc(sp){
+			height: auto;
+		padding-top: 100px;
+		}
+	}
 	@include sc(tab){
 		padding-top: 150px;
 		height: 200px;
@@ -611,9 +668,35 @@ span{
 		}
 	}
 }
+
+.leadArea.style01{
+	position: relative;
+	width: 1000px;
+	margin: 0 auto 30px;
+	box-sizing: border-box;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 11%);
+	@include sc(tab){
+		width: 650px;
+	}
+	@include sc(sp){
+		width: 100%;
+		display: flex;
+		align-items: center;
+	}
+}
 .contentBox01{
 	&.style01{
 		background-color: $tc02;
+	}
+	&.style02{
+		height: 57vh;
+		background-color: $tc02;
+		@include sc(sp){
+			height: 50vh;
+		}
 	}
 	.wrapBox{
 		width: 1000px;
@@ -895,3 +978,118 @@ span{
 	}
 
 }
+
+.loginWrap{
+	.lead{
+		margin-bottom: 20px;
+		text-align: center;
+	}
+	
+}
+.login-form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	.inputBox{
+		margin-bottom: 20px;
+		&:last-child{
+			margin-bottom: 0;
+		}
+
+	}
+	input{
+		// width: 300px;
+		width: 50%;
+		display: block;
+		margin: 0 auto;
+		box-sizing: border-box;
+		
+		padding: 15px;
+		// width: 100%;
+		margin: 0 auto;
+		border-radius: 30px;
+		border: none;
+		background-color: #f3f3f3;
+		@include sc(sp){
+			width: 100%;
+		}
+	}
+	button{
+		background: none;
+		background-color:none!important;
+		border: none;
+	}
+	.login_btn{
+		margin-left: 0;
+		margin-bottom: 10px;
+		a{
+			padding: 10px 40px;
+			@include sc(sp){
+				width: 80%;
+				padding: 10px;
+			}
+		}
+	}
+	.btnBox{
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+	}
+}
+
+.loginSpaceWrap{
+	height: 20vh;
+		padding-top: 150px;
+	background-image: url(/common/img/bg_img01.png);
+	background-position: center bottom;
+	background-repeat: no-repeat;
+	background-size:contain;
+}
+
+.loginWrap{
+	background-color: $tc01;
+	border-radius: 10px;
+	box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 11%);
+	box-sizing: border-box;
+	padding: 40px;
+	margin-top: -250px;
+	@include sc(sp){
+		margin-top: -200px;
+	}
+}
+
+.signup_btn{
+	@include sc(sp){
+		display: block;
+	}
+	a{
+		font-weight: bold;
+		background-image: linear-gradient( 90deg, rgb(223,202,157) 0%, rgb(221,185,107) 100%);
+			background-image: -moz-linear-gradient( 90deg, rgb(223,202,157) 0%, rgb(221,185,107) 100%);
+			background-image: -webkit-linear-gradient( 90deg, rgb(223,202,157) 0%, rgb(221,185,107) 100%);
+			background-image: -ms-linear-gradient( 90deg, rgb(223,202,157) 0%, rgb(221,185,107) 100%);
+		box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
+		box-sizing: border-box;
+		padding: 10px 40px;
+		border-radius: 100px;
+		display: inline-block;
+		@include fz(15);
+		color: $tc01;
+		text-decoration: none;
+		@include anim;
+		@include sc(sp){
+			width: 80%;
+			padding: 10px;
+			@include fz(14);
+		}
+		
+		&:hover{
+			background-image: linear-gradient( 180deg, rgb(223,202,157) 0%, rgb(221,185,107) 100%);
+			background-image: -moz-linear-gradient( 180deg, rgb(223,202,157) 0%, rgb(221,185,107) 100%);
+			background-image: -webkit-linear-gradient( 180deg, rgb(223,202,157) 0%, rgb(221,185,107) 100%);
+			background-image: -ms-linear-gradient( 180deg, rgb(223,202,157) 0%, rgb(221,185,107) 100%);
+			@include anim;
+		}
+	}
+}
+

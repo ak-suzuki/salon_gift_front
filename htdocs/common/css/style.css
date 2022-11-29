@@ -216,7 +216,7 @@ header {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   box-sizing: border-box;
   padding: 20px;
   z-index: 9999;
@@ -332,6 +332,11 @@ header nav .gMenu {
     justify-content: space-around;
   }
 }
+@media screen and (max-width: 767px) and (max-width: 767px) {
+  header nav .gMenu {
+    justify-content: center;
+  }
+}
 header nav .gMenu li {
   padding-right: 30px;
 }
@@ -347,7 +352,7 @@ header nav .gMenu li {
 }
 @media screen and (max-width: 767px) {
   header nav .gMenu li {
-    padding-right: 5px;
+    padding: 0 5px;
     border-right: solid 1px #dfecf3;
   }
 }
@@ -486,6 +491,46 @@ footer p {
   color: #999999;
 }
 
+button .login_btn {
+  margin-left: 15px;
+}
+@media screen and (max-width: 767px) {
+  button .login_btn {
+    display: block;
+  }
+}
+button .login_btn a {
+  font-weight: bold;
+  background-image: linear-gradient(90deg, rgb(255, 174, 0) 0%, rgb(255, 204, 51) 100%);
+  background-image: -ms-linear-gradient(90deg, rgb(255, 174, 0) 0%, rgb(255, 204, 51) 100%);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border-radius: 100px;
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+@media screen and (max-width: 767px) {
+  button .login_btn a {
+    padding: 5px 10px;
+    font-size: 1.4rem;
+  }
+}
+button .login_btn a:hover {
+  background-image: linear-gradient(180deg, rgb(255, 174, 0) 0%, rgb(255, 204, 51) 100%);
+  background-image: -ms-linear-gradient(180deg, rgb(255, 174, 0) 0%, rgb(255, 204, 51) 100%);
+  transition: all 0.5s ease;
+}
+
+.bottomArea {
+  padding: 50px;
+  box-sizing: border-box;
+  background-color: #ffca31;
+}
+
 /*////////////////////////////////////////////////////
 
 	汎用スタイル
@@ -501,6 +546,52 @@ footer p {
 ////////////////////////////////////////////////////*/
 .hidden {
   display: none;
+}
+
+.mt_10 {
+  margin-top: 10px;
+}
+
+.mt_20 {
+  margin-top: 20px;
+}
+
+.mt_30 {
+  margin-top: 30px;
+}
+
+.mt_40 {
+  margin-top: 40px;
+}
+
+.mt_50 {
+  margin-top: 50px;
+}
+
+.mt_60 {
+  margin-top: 60px;
+}
+
+.mt_70 {
+  margin-top: 70px;
+}
+
+.alignC {
+  text-align: center;
+}
+
+.alignL {
+  -moz-text-align-last: left;
+       text-align-last: left;
+}
+
+.alignR {
+  text-align: right;
+}
+
+a {
+  text-decoration: none;
+  color: #ffca31;
 }
 
 /* ------------------------------------------------
@@ -548,6 +639,11 @@ footer p {
   vertical-align: middle;
   width: 100%;
   height: auto;
+}
+
+.tit03 {
+  margin-bottom: 20px;
+  font-size: 18px;
 }
 
 /* ------------------------------------------------
@@ -987,6 +1083,22 @@ ul.clm:last-child {
   height: 300px;
   padding-top: 200px;
 }
+.headWrap.style01 {
+  height: 200px;
+  padding-top: 150px;
+}
+@media screen and (max-width: 1020px) {
+  .headWrap.style01 {
+    height: auto;
+    padding-top: 100px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .headWrap.style01 {
+    height: auto;
+    padding-top: 100px;
+  }
+}
 @media screen and (max-width: 1020px) {
   .headWrap {
     padding-top: 150px;
@@ -1096,8 +1208,40 @@ ul.clm:last-child {
   }
 }
 
+.leadArea.style01 {
+  position: relative;
+  width: 1000px;
+  margin: 0 auto 30px;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.11);
+}
+@media screen and (max-width: 1020px) {
+  .leadArea.style01 {
+    width: 650px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .leadArea.style01 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
 .contentBox01.style01 {
   background-color: #ffca31;
+}
+.contentBox01.style02 {
+  height: 57vh;
+  background-color: #ffca31;
+}
+@media screen and (max-width: 767px) {
+  .contentBox01.style02 {
+    height: 50vh;
+  }
 }
 .contentBox01 .wrapBox {
   width: 1000px;
@@ -1389,6 +1533,117 @@ ul.clm:last-child {
     width: 100%;
     padding-left: 0;
   }
+}
+
+.loginWrap .lead {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.login-form .inputBox {
+  margin-bottom: 20px;
+}
+.login-form .inputBox:last-child {
+  margin-bottom: 0;
+}
+.login-form input {
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 15px;
+  margin: 0 auto;
+  border-radius: 30px;
+  border: none;
+  background-color: #f3f3f3;
+}
+@media screen and (max-width: 767px) {
+  .login-form input {
+    width: 100%;
+  }
+}
+.login-form button {
+  background: none;
+  background-color: none !important;
+  border: none;
+}
+.login-form .login_btn {
+  margin-left: 0;
+  margin-bottom: 10px;
+}
+.login-form .login_btn a {
+  padding: 10px 40px;
+}
+@media screen and (max-width: 767px) {
+  .login-form .login_btn a {
+    width: 80%;
+    padding: 10px;
+  }
+}
+.login-form .btnBox {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.loginSpaceWrap {
+  height: 20vh;
+  padding-top: 150px;
+  background-image: url(/common/img/bg_img01.png);
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.loginWrap {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.11);
+  box-sizing: border-box;
+  padding: 40px;
+  margin-top: -250px;
+}
+@media screen and (max-width: 767px) {
+  .loginWrap {
+    margin-top: -200px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .signup_btn {
+    display: block;
+  }
+}
+.signup_btn a {
+  font-weight: bold;
+  background-image: linear-gradient(90deg, rgb(223, 202, 157) 0%, rgb(221, 185, 107) 100%);
+  background-image: -ms-linear-gradient(90deg, rgb(223, 202, 157) 0%, rgb(221, 185, 107) 100%);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16);
+  box-sizing: border-box;
+  padding: 10px 40px;
+  border-radius: 100px;
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+@media screen and (max-width: 767px) {
+  .signup_btn a {
+    width: 80%;
+    padding: 10px;
+    font-size: 1.4rem;
+  }
+}
+.signup_btn a:hover {
+  background-image: linear-gradient(180deg, rgb(223, 202, 157) 0%, rgb(221, 185, 107) 100%);
+  background-image: -ms-linear-gradient(180deg, rgb(223, 202, 157) 0%, rgb(221, 185, 107) 100%);
+  transition: all 0.5s ease;
 }
 
 /*////////////////////////////////////////////////////
